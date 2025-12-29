@@ -1,6 +1,18 @@
 import streamlit as st
 import hashlib
 
+from auth import login, logout
+
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+if not st.session_state["logged_in"]:
+    login()
+    st.stop()
+
+logout()
+
+
 # USUARIOS (usuario: password)
 USERS = {
     "admin": "admin123",
